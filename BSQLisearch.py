@@ -1,20 +1,16 @@
 #coding=utf-8
+#author: https://github.com/h4cnull
+
 import requests
 import warnings
 import argparse
 import re
 import requests
+from time import sleep
 
-import sys
-import ssl
-import socket
-import base64
-import os
-from urllib.parse import urlparse
-from xml.dom.minidom import parse
 #import string
 #string.printable
-from time import sleep
+
 warnings.filterwarnings('ignore')
 
 import logging
@@ -121,26 +117,7 @@ def binary_search(low,high,proxy,true_txt,time_sec,request_time,raw_request_with
         return None
     host = host[0].strip()
     res = raw_request_with_num_ope.split()[1]
-    # url = "https://{}{}".format(host.strip(),res) if tls else "http://{}{}".format(host.strip(),res)
-    # logger.debug(url)
-    '''
-    host = host[0].strip()
-    host_port = host.split(":")
-    logger.debug("{}".format(host))
-    if len(host_port) == 2:
-        host = host_port[0]
-        port = int(host_port[1])
-    else:
-        host = host_port[0]
-        port = 443 if tls else 80
-    rsts = socket.getaddrinfo(host, None, socket.AF_UNSPEC)
-    if len(rsts) == 0:
-        print("unknown host")
-        return None
-    family, _, _, _, sockaddr = rsts[0]
-    addr = sockaddr[0]
-    '''
-    # operator = ">"
+    
     is_binary_search = True
     if operator not in [">","<",">=","<="]:
         is_binary_search = False
@@ -292,9 +269,7 @@ def main():
     parser.add_argument("--inc-count",default=1,type=int,dest="increase_count",help="{INC_num} increase count")
     parser.add_argument("--out-ascii",dest="out_ascii",action="store_true",help="print ascii char")
     parser.add_argument("--proxy",dest="proxy",help="http proxy")
-    # args_group = parser.add_argument_group()
     parser.add_argument("--ranges",dest="ranges",help="search ranges, example[_0-9A-Za-z]: \"48-57,65-90,95,97-122. default 33-126", default="33-126")
-    # parser.add_argument("--ascii-pb",dest="printable",action="store_true",help="this is default setting when brute force printable character, search ascii printable char range 33-126")
     parser.add_argument("--log-level",dest="log_level",default="INFO",choices=["DEBUG","INFO","ERROR"],help="set log level, default INFO")
     search_ranges = []
     args = parser.parse_args()
