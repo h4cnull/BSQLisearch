@@ -282,15 +282,15 @@ def binary_search(low,high,proxy,true_txt,time_sec,raw_request_with_num_ope,host
             else:
                 pre_bool = False
         else:
-            t = r.elapsed.total_seconds() - (BASE_REQ_TIME/REQ_COUNT)
-            if t >= time_sec:
+            t = r.elapsed.total_seconds()
+            if t > time_sec:
                 logger.debug("time based server used {}s, networking average time {}s.".format(t,BASE_REQ_TIME/REQ_COUNT))
                 pre_bool = True
                 req_time = r.elapsed.total_seconds() - time_sec
                 BASE_REQ_TIME += req_time
             else:
                 BASE_REQ_TIME += r.elapsed.total_seconds()
-                pre_bool = True
+                pre_bool = False
             REQ_COUNT += 1
             
         if greater_than_num:
