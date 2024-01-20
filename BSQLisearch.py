@@ -8,7 +8,8 @@ import re
 import requests
 from time import sleep
 import time
-
+from urllib.parse import quote
+from urllib.parse import unquote
 #import string
 #string.printable
 
@@ -18,6 +19,8 @@ import logging
 
 ASCII = False
 ASCII_OUTPUT = False
+ENCODE_OPE = False
+
 BLUE = "\x1b[94m"
 GREEN = '\x1b[92m'
 YELLOW = "\x1b[93m"
@@ -167,6 +170,7 @@ def brute_force(search_ranges,proxy,true_txt,time_sec,raw_request_with_payload,h
 def binary_search(low,high,proxy,true_txt,time_sec,raw_request_with_num_ope,host,tls,operator,sleep_time):
     global ASCII_OUTPUT
     global ASCII
+    global ENCODE_OPE
     global BASE_REQ_TIME
     global REQ_COUNT
 
@@ -220,7 +224,7 @@ def binary_search(low,high,proxy,true_txt,time_sec,raw_request_with_num_ope,host
     last_tow_num = False
     pre_num = None
     while True:
-        if operator == "=" and not is_binary_search:
+        if operator not in [">",">=","<","<="] and not is_binary_search:
             num = low + index
         else:
             if greater_than_num:
@@ -238,9 +242,9 @@ def binary_search(low,high,proxy,true_txt,time_sec,raw_request_with_num_ope,host
             index = 1
             operator = "="
         if ASCII:
-            req = str(raw_request_with_num_ope).replace('{BFP}',chr(num)).replace('{OPE}',operator)
+            req = str(raw_request_with_num_ope).replace('{BFP}',chr(num)).replace('{OPE}',operator if not ENCODE_OPE else quote(operator))
         else:
-            req = str(raw_request_with_num_ope).replace('{BFP}',str(num)).replace('{OPE}',operator)
+            req = str(raw_request_with_num_ope).replace('{BFP}',str(num)).replace('{OPE}',operator if not ENCODE_OPE else quote(operator))
         req = re.split("\r?\n\r?\n",req,maxsplit=1)
         req_body = None
         if len(req) == 2:
@@ -333,10 +337,11 @@ def main():
     grp.add_argument("--time-sec",dest="time_sec",default=0,type=int,help="time based delay secs")
     parser.add_argument("--host",dest="target_host",help="specific target http host when you need different \"Host\" in raw request")
     parser.add_argument("--operator",dest="operator",choices=[">",">=","=","<=","<","like","LIKE"],default=">",help="specific the operator point {OPE} replaced symbol, default \">\"")
+    parser.add_argument("--encode-ope",dest="encode_ope",action="store_true",help="url encode operator")
     parser.add_argument("-l","--log-file",dest="raw_request_file",help='raw request file with payload, brute force point marked by {BFP}, operator marked by {OPE}, stacking point marked by {STP}, increase num marked by {INC_num}',required=True)
     parser.add_argument("--tls",action="store_true",help="https connection")
     parser.add_argument("--req-delay",dest="sleep_time",default=100,type=int,help="delay time between request")
-    parser.add_argument("--ascii",action="store_true",help="brute force ascii char in ranges")
+    parser.add_argument("--ascii",dest="ascii",action="store_true",help="brute force ascii char in ranges")
     parser.add_argument("--inc-count",default=1,type=int,dest="increase_count",help="{INC_num} increase count")
     parser.add_argument("--out-ascii",dest="out_ascii",action="store_true",help="print ascii char")
     parser.add_argument("--proxy",dest="proxy",help="http proxy")
@@ -353,8 +358,11 @@ def main():
 
     global ASCII_OUTPUT
     global ASCII
+    global ENCODE_OPE
     ASCII_OUTPUT = args.out_ascii
     ASCII = args.ascii
+    ENCODE_OPE = args.encode_ope
+
     rs = args.ranges.split(",")
     for r in rs:
         m = re.findall("(\d+)-(\d+)",r.strip())
